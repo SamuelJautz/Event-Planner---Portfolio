@@ -8,7 +8,7 @@ main {
   margin: 0 auto;
   flex-direction: column;
   align-items: center;
-  padding: 040px;
+  padding: 0 40px;
 
   /*  tests und debug  */
   border: red 1px solid;
@@ -29,6 +29,7 @@ section {
   margin: 20px;
   padding: 20px;
 }
+
 #header-block {
   display: flex;
   align-items: center;
@@ -38,22 +39,11 @@ section {
   border-bottom: 1px solid lightgray;
   column-gap: 40px;
 }
+
 #header-block > a {
   color: black;
   font-weight: bold;
   text-decoration: none;
-}
-
-.input-form{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px
-}
-
-.input-row {
-
-  /*  tests und debug  */
-  border: red 1px solid;
 }
 
 .input-field {
@@ -65,6 +55,8 @@ section {
 
   border: 1px solid lightgray;
   border-radius: 8px;
+  
+  font-size: medium;
 }
 
 .input-button {
@@ -74,12 +66,36 @@ section {
   
   padding: 12px;
   margin-bottom: 20px;
+
+  background: black;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  font-size: medium;
 }
 
 #description {
   resize: vertical;
   min-height: 100px;
   max-height: 500px;
+  font-size: large;
+}
+
+.event-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+}
+
+.event-selector > input, .event-selector > select {
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: white;
+  font-size: medium;
 }
 
 

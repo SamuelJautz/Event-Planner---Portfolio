@@ -36,13 +36,16 @@
       </section>
 
       <section id="events-section">
-        <label for="sort">Sortieren nach </label>
-        <select id="sort">
-          <option value="date">Datum aufsteigend</option>
-          <option value="date">Datum absteigend</option>
-          <option value="title">Titel A-Z</option>
-          <option value="title">Titel Z-A</option>
-        </select>
+        <div class="event-selector">
+          <label for="sort">Sortieren nach:</label>
+          <select id="sort">
+            <option value="date">Datum aufsteigend</option>
+            <option value="date">Datum absteigend</option>
+            <option value="title">Titel A-Z</option>
+            <option value="title">Titel Z-A</option>
+          </select>
+          <input id="search" type="text" placeholder="Suchen..." />
+        </div>
 
         <div class="event">
           <h3>Rock am Ring</h3>
