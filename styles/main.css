@@ -98,4 +98,11 @@ section {
   font-size: medium;
 }
 
+.event > * {
+  margin: 2px;
+}
+.event {
+  margin: 4px;
+}
+
 
