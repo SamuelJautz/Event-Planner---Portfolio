@@ -8,6 +8,8 @@
   <body>
     <header id="header">
       <h1>Event-Planer</h1>
+      <a href="Start">Start</a>
+      <a href="Kontakt">Kontakt</a>
     </header>
     <section id="form-section">
       <h2>Neues Event erstellen</h2>
@@ -25,7 +27,14 @@
       </form>
     </section>
 
-    <section id="events-section"></section>
-    <footer id="footer"></footer>
+    <section id="events-section">
+      <label for="sort">Sortieren nach </label>
+      <select placeholder="Suchen" id="sort">
+        <option value="date">Datum</option>
+        <option value="title">Titel (A-Z)</option>
+      </select>
+    </section>
+
+    <footer id="footer"><p>© 2025 Event Planer</p></footer>
   </body>
 </html>
