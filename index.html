@@ -16,24 +16,22 @@
       <section id="form-section">
         <h2>Neues Event erstellen</h2>
         <form id="input-form">
-          <div class="form-row">
-            <input id="title" type="text" placeholder="Titel" required />
-          </div>
-          <div class="form-row">
-            <input id="date" type="date" required />
-          </div>
-          <div class="form-row">
-            <textarea
-              id="info-text"
-              type="text"
-              placeholder="Beschreibung"
-              required
-            >
-            </textarea>
-          </div>
-          <div class="form-row">
-            <button>Hinzufügen</button>
-          </div>
+          <input
+            class="input-field"
+            id="title"
+            type="text"
+            placeholder="Titel"
+            required
+          />
+          <input class="input-field" id="date" type="date" required />
+          <textarea
+            class="input-field"
+            id="description"
+            placeholder="Beschreibung"
+            required
+          >
+          </textarea>
+          <button class="input-button">Hinzufügen</button>
         </form>
       </section>
 

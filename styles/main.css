@@ -16,6 +16,11 @@ main {
 h1 {
   margin-right: auto;
 }
+
+h2 {
+  font-weight: 600;
+}
+
 section {
   border: 1px lightgray solid;
   border-radius: 12px;
@@ -45,9 +50,36 @@ section {
   gap: 12px
 }
 
-.input-row{
-  display: flex;
-  flex-direction: column;
+.input-row {
+
+  /*  tests und debug  */
+  border: red 1px solid;
+}
+
+.input-field {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  margin-bottom: 20px;
+
+  border: 1px solid lightgray;
+  border-radius: 8px;
+}
+
+.input-button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+#description {
+  resize: vertical;
+  min-height: 100px;
+  max-height: 500px;
 }
 
 
