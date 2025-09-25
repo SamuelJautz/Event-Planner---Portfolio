@@ -2,29 +2,28 @@
 html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
 main {
   max-width: 900px;
   display: flex;
   margin: 0 auto;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  padding: 040px;
 
   /*  tests und debug  */
   border: red 1px solid;
 }
-
+h1 {
+  margin-right: auto;
+}
 section {
   border: 1px lightgray solid;
   border-radius: 12px;
 
   width: 100%;
-  margin: 20px auto;
-  padding: 20px 5px;
+  margin: 20px;
+  padding: 20px;
 }
-
-
 #header-block {
   display: flex;
   align-items: center;
@@ -34,13 +33,21 @@ section {
   border-bottom: 1px solid lightgray;
   column-gap: 40px;
 }
-
 #header-block > a {
   color: black;
   font-weight: bold;
   text-decoration: none;
 }
 
-h1 {
-  margin-right: auto;
+.input-form{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px
 }
+
+.input-row{
+  display: flex;
+  flex-direction: column;
+}
+
+
