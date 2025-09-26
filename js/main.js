@@ -1,3 +1,5 @@
+// GRUPPE: WWI24A - 4133345 - 8803132 - 4754659 - 5906652
+
 var events = [];
 
 var form = document.getElementById("input-form");
