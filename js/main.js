@@ -11,18 +11,18 @@ var sortmenu = document.getElementById("sort");
 form.addEventListener("submit", function(e) {
   e.preventDefault();
     var event = new EventItem(titleInput.value, dateInput.value, descriptionInput.value);
-    if(!validateEvent(event)){
+    if(!event.validateEvent(event)){
       //TODO: Error Nachricht wenn event nicht validiert werden kann}
-      
+      alert("Fehler")
+      return;
     }
     events.push(event);
-    sortEvents(events, );
     refreshEventList(events, eventlist);
 });
 
 
 function refreshEventList(events, eventlist) {
-  eventlist.innerHtml = ""; //alte Listeninhalte entfernen
+  eventlist.innerHTML = ""; //alte Listeninhalte entfernen
 
   //Default -- kiene Events vorhanden
   if(events.length == 0){
@@ -30,12 +30,14 @@ function refreshEventList(events, eventlist) {
     return;
   }
 
-  for (var e in events) {
+  for (var e of events) {
     var li = document.createElement("li");
     li.innerHTML = `
-      <h3>${e.title}</h3>
-      <p>Datum: ${e.Date}</p>
-      <p>${e.description}</p>
+      <div class="event">
+        <h3>${e.title}</h3>
+        <p><span style="font-weight: bold">Datum: </span>${e.date}</p>
+        <p>${e.description}</p>
+      </div>
     `;
     eventlist.appendChild(li);
   }
@@ -43,23 +45,24 @@ function refreshEventList(events, eventlist) {
 
 // Sortier-Funktion
 function sortEvents(events, sort){
-  if (mode === "date-asc")   return list.sort((a,b)=> new Date(a.date) - new Date(b.date));
-  if (mode === "date-desc")  return list.sort((a,b)=> new Date(b.date) - new Date(a.date));
-  if (mode === "title-asc")  return list.sort((a,b)=> a.title.localeCompare(b.title));
-  if (mode === "title-desc") return list.sort((a,b)=> b.title.localeCompare(a.title));
-  return list;
+  if (sort == "date-asc")   return events.sort((a,b)=> new Date(a.date) - new Date(b.date));
+  if (sort == "date-desc")  return events.sort((a,b)=> new Date(b.date) - new Date(a.date));
+  if (sort == "title-asc")  return events.sort((a,b)=> a.title.localeCompare(b.title));
+  if (sort == "title-desc") return events.sort((a,b)=> b.title.localeCompare(a.title));
+  return events;
 }
 
 class EventItem {
     constructor(title, date, description) {
-        this.date = title.trim();
+        this.title = title.trim();
         this.date = date;
         this.description = description;
     }
 
     validateEvent(){
-        if(title.length == 0 || date.length == 0 || description.length == 0) {
+        if(this.title.length == 0 || this.date.length == 0 || this.description.length == 0) {
             return false;
         }
+        return true;
     }
 }

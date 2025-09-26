@@ -101,3 +101,8 @@ section {
 .event {
   margin: 4px;
 }
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
