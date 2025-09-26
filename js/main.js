@@ -10,44 +10,40 @@ var sortmenu = document.getElementById("sort");
 
 form.addEventListener("submit", function(e) {
 
-    var title;
-    var date;
-    var description;
+    var event = new Event(titleInput, dateInput, descriptionInput);
+    if(!event.validateEvent){ //TODO: Error Nachricht wenn event nicht validiert werden kann}
 
-    if(title.length == 0 || date.length == 0 || description.length == 0) {
-        // TODO: Error einfügfen
-    }
 });
+
+function refreshList() {
+
+}
+
 
 
 // Sortier-Funktion
-function sort(list) {
-    var value = sortmenu.value;
-  
-    if (value === "title-asc") {
-      return list.slice().sort(function(a, b) {
-        return a.title.toLowerCase().localeCompare(b.title.toLowerCase(), "de");
-      });
+function sortEvents(eventlist, sort){
+  if (mode === "date-asc")   return list.sort((a,b)=> new Date(a.date) - new Date(b.date));
+  if (mode === "date-desc")  return list.sort((a,b)=> new Date(b.date) - new Date(a.date));
+  if (mode === "title-asc")  return list.sort((a,b)=> a.title.localeCompare(b.title));
+  if (mode === "title-desc") return list.sort((a,b)=> b.title.localeCompare(a.title));
+  return list;
+}
+
+class Event {
+    constructor(title, date, description) {
+        this.date = title;
+        this.date = date;
+        this.description = description;
     }
-  
-    if (value === "title-des") {
-      return list.slice().sort(function(a, b) {
-        return b.title.toLowerCase().localeCompare(a.title.toLowerCase(), "de");
-      });
+
+    validateEvent(){
+        if(title.length == 0 || date.length == 0 || description.length == 0) {
+            return false;
+        }
     }
-  
-    if (value === "date-des") {
-      return list.slice().sort(function(a, b) {
-        return new Date(b.date) - new Date(a.date);
-      });
-    }
-    if (value === "date-asc") {
-        return list.slice().sort(function(a, b) {
-            return new Date(a.date) - new Date(b.date);
-        });
-     }
-    }
-  
+}
+
 
 
 
