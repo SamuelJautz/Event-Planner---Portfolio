@@ -17,7 +17,17 @@ form.addEventListener("submit", function(e) {
       return;
     }
     events.push(event);
+      // sortieren (Fallback: date-asc)
+    sortEvents(events, (sortmenu && sortmenu.value) || "date-asc");
     refreshEventList(events, eventlist);
+});
+
+
+
+sortmenu.addEventListener("change", function () {
+  var sort = sortmenu.value;
+  sortEvents(events, sort);
+  refreshEventList(events, eventlist);
 });
 
 
@@ -46,9 +56,9 @@ function refreshEventList(events, eventlist) {
 // Sortier-Funktion
 function sortEvents(events, sort){
   if (sort == "date-asc")   return events.sort((a,b)=> new Date(a.date) - new Date(b.date));
-  if (sort == "date-desc")  return events.sort((a,b)=> new Date(b.date) - new Date(a.date));
+  if (sort == "date-des")  return events.sort((a,b)=> new Date(b.date) - new Date(a.date));
   if (sort == "title-asc")  return events.sort((a,b)=> a.title.localeCompare(b.title));
-  if (sort == "title-desc") return events.sort((a,b)=> b.title.localeCompare(a.title));
+  if (sort == "title-des") return events.sort((a,b)=> b.title.localeCompare(a.title));
   return events;
 }
 
