@@ -39,6 +39,9 @@ function refreshEventList(events, eventlist) {
   var search = searchbar.value.trim().toLowerCase();
   var filtered = events;
 
+  // Felder leer machen
+  form.reset();
+
   if(search.length > 0){
     filtered = events.filter(function (EventItem) {
       return (
@@ -83,7 +86,7 @@ class EventItem {
     constructor(title, date, description) {
         this.title = title.trim();
         this.date = date;
-        this.description = description;
+        this.description = description.trim();
     }
 
     validateEvent(){
