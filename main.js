@@ -12,17 +12,13 @@ var sortmenu = document.getElementById("sort");
 
 form.addEventListener("submit", function(e) {
   e.preventDefault();
-    var event = new EventItem(titleInput.value, dateInput.value, descriptionInput.value);
-    if(!event.validateEvent()){
-      //TODO: Error Nachricht wenn event nicht validiert werden kann}
-      alert("Fehler")
-      return;
-    }
-    events.push(event);
-    refreshEventList(events, eventlist);
+  var event = new EventItem(titleInput.value, dateInput.value, descriptionInput.value);
+  
+  if(!validateEvent(event)) return;
+
+  events.push(event);
+  refreshEventList(events, eventlist);
 });
-
-
 
 sortmenu.addEventListener("change", function () {
   refreshEventList(events, eventlist);
@@ -33,6 +29,21 @@ searchbar.addEventListener("input", function() {
   refreshEventList(events, eventlist);
 });
 
+function validateEvent(event){
+  titleInput.setCustomValidity("");
+  dateInput.setCustomValidity("");
+  descriptionInput.setCustomValidity("");
+
+  if (!titleInput.value.trim())  titleInput.setCustomValidity("Titel fehlt.");
+  if (!dateInput.value)          dateInput.setCustomValidity("Datum fehlt.");
+  if (!descriptionInput.value.trim()) descriptionInput.setCustomValidity("Beschreibung");
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return false;
+  }
+  return true;
+}
 
 function refreshEventList(events, eventlist) {
 
@@ -89,12 +100,5 @@ class EventItem {
         this.title = title.trim();
         this.date = date;
         this.description = description.trim();
-    }
-
-    validateEvent(){
-        if(this.title.length == 0 || this.date.length == 0 || this.description.length == 0) {
-            return false;
-        }
-        return true;
     }
 }
