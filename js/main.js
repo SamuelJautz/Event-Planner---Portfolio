@@ -11,22 +11,18 @@ var sortmenu = document.getElementById("sort");
 form.addEventListener("submit", function(e) {
   e.preventDefault();
     var event = new EventItem(titleInput.value, dateInput.value, descriptionInput.value);
-    if(!event.validateEvent(event)){
+    if(!event.validateEvent()){
       //TODO: Error Nachricht wenn event nicht validiert werden kann}
       alert("Fehler")
       return;
     }
     events.push(event);
-      // sortieren (Fallback: date-asc)
-    sortEvents(events, (sortmenu && sortmenu.value) || "date-asc");
     refreshEventList(events, eventlist);
 });
 
 
 
 sortmenu.addEventListener("change", function () {
-  var sort = sortmenu.value;
-  sortEvents(events, sort);
   refreshEventList(events, eventlist);
 });
 
@@ -37,29 +33,31 @@ searchbar.addEventListener("input", function() {
 
 
 function refreshEventList(events, eventlist) {
-  
+
+  sortEvents(events, sortmenu.value);
+
   var search = searchbar.value.trim().toLowerCase();
   var filtered = events;
 
   if(search.length > 0){
     filtered = events.filter(function (EventItem) {
       return (
-        EventItem.title.toLowerCase().includes(search) || eventItem.description.toLowerCase().includes(search)
+        EventItem.title.toLowerCase().includes(search) || 
+        EventItem.description.toLowerCase().includes(search)
       );
     });
   }
 
 
-
   eventlist.innerHTML = ""; //alte Listeninhalte entfernen
 
   //Default -- kiene Events vorhanden
-  if(events.length == 0){
-    eventlist.innerHtml = "<li>Keine Events vorhanden</li>"
+  if(filtered.length == 0){
+    eventlist.innerHTML = "<li>Keine Events vorhanden</li>"
     return;
   }
 
-  for (var e of events) {
+  for (var e of filtered) {
     var li = document.createElement("li");
     li.innerHTML = `
       <div class="event">
