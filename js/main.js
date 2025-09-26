@@ -31,7 +31,26 @@ sortmenu.addEventListener("change", function () {
 });
 
 
+searchbar.addEventListener("input", function() {
+  refreshEventList(events, eventlist);
+});
+
+
 function refreshEventList(events, eventlist) {
+  
+  var search = searchbar.value.trim().toLowerCase();
+  var filtered = events;
+
+  if(search.length > 0){
+    filtered = events.filter(function (EventItem) {
+      return (
+        EventItem.title.toLowerCase().includes(search) || eventItem.description.toLowerCase().includes(search)
+      );
+    });
+  }
+
+
+
   eventlist.innerHTML = ""; //alte Listeninhalte entfernen
 
   //Default -- kiene Events vorhanden
