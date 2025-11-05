@@ -1,0 +1,11 @@
+Kurs: WWI24A
+
+Gruppe:
+4133345 Samuel Jautz  
+8803132 Johannes Belz  
+4754659 Lars Guenther 
+5906652 Tim Kachel
+4754659 Abdul Yumma
+
+GitHub Link:
+https://github.com/SamuelJautz/Event-Planner---Portfolio
